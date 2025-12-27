@@ -39,8 +39,7 @@ const readableIdentifier = (name: string): string => {
 };
 
 const Table = (
-  { rows, classes }:
-  {
+  { rows, classes }: {
     rows: object[],
     classes?: {
       self?: string,
