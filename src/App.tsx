@@ -1,5 +1,5 @@
 import './actui/index.css';
 
-const App = () => <h2>Hi</h2>
+const App = () => <p>Hello</p>
 
 export default App;

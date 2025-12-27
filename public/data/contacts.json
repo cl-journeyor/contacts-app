@@ -1,0 +1,206 @@
+[
+    {
+        "id": 1,
+        "color": "black",
+        "name": "Drake Turing",
+        "phone": "+1 202-918-2132",
+        "email": "drturing2339@gmail.com",
+        "groups": [
+            "family"
+        ]
+    },
+    {
+        "id": 2,
+        "color": "orange",
+        "name": "Joana Gómez",
+        "phone": "+52 237 254 6246",
+        "email": "joana.gomez2250@gmail.com",
+        "groups": [
+            "friends"
+        ]
+    },
+    {
+        "id": 3,
+        "color": "red",
+        "name": "Stephanie Wells",
+        "phone": "+1 424-555-9772",
+        "email": "stwell55@outlook.com",
+        "groups": [
+            "work"
+        ]
+    },
+    {
+        "id": 4,
+        "color": "yellow",
+        "name": "Erick Boor",
+        "phone": "+1 472-282-0607",
+        "email": "l20boor@gmail.com",
+        "groups": [
+            "college",
+            "friends"
+        ]
+    },
+    {
+        "id": 5,
+        "color": "violet",
+        "name": "Ricky Paul",
+        "phone": "+1 505-644-9993",
+        "email": "ricky21@yahoo.com",
+        "groups": [
+            "work",
+            "friends"
+        ]
+    },
+    {
+        "id": 6,
+        "color": "yellow",
+        "name": "Karen Morgan",
+        "phone": "+1 505-622-0140",
+        "email": "",
+        "groups": [
+            "college"
+        ]
+    },
+    {
+        "id": 7,
+        "color": "skyblue",
+        "name": "Elena Rojas",
+        "phone": "+52 657 154 2389",
+        "email": "",
+        "groups": [
+            "work"
+        ]
+    },
+    {
+        "id": 8,
+        "color": "gray",
+        "name": "Emmanuel",
+        "phone": "+1 505-646-9333",
+        "email": "emmanuel.joel@gmail.com",
+        "groups": [
+            "friends"
+        ]
+    },
+    {
+        "id": 9,
+        "color": "white",
+        "name": "Peter Brown",
+        "phone": "+1 505-646-8729",
+        "email": "fnalobj@yahoo.com",
+        "groups": [
+            "church"
+        ]
+    },
+    {
+        "id": 10,
+        "color": "blue",
+        "name": "Mary Turing",
+        "phone": "+1 505-644-6187",
+        "email": "maryturing28810@gmail.com",
+        "groups": [
+            "family"
+        ]
+    },
+    {
+        "id": 11,
+        "color": "brown",
+        "name": "Santiago Jones",
+        "phone": "+1 742-319-6202",
+        "email": "",
+        "groups": [
+            "work"
+        ]
+    },
+    {
+        "id": 12,
+        "color": "white",
+        "name": "Bill Watson",
+        "phone": "+1 505-631-7882",
+        "email": "bill.watson90@outlook.com",
+        "groups": [
+            "friends"
+        ]
+    },
+    {
+        "id": 13,
+        "color": "orange",
+        "name": "Countricmedia",
+        "phone": "+1 505-619-2823",
+        "email": "support@countricmedia.org",
+        "groups": [
+            "services"
+        ]
+    },
+    {
+        "id": 14,
+        "color": "red",
+        "name": "Michelle Turing",
+        "phone": "+1 472-213-9712",
+        "email": "michelle2525@outlook.com",
+        "groups": [
+            "family",
+            "friends"
+        ]
+    },
+    {
+        "id": 15,
+        "color": "green",
+        "name": "Amy Le Verrier",
+        "phone": "+1 382-566-4928",
+        "email": "berry50123@outlook.com",
+        "groups": [
+            "church",
+            "friends"
+        ]
+    },
+    {
+        "id": 16,
+        "color": "violet",
+        "name": "Francis Turing",
+        "phone": "+1 505-646-3554",
+        "email": "francis.turing30@outlook.com",
+        "groups": [
+            "family"
+        ]
+    },
+    {
+        "id": 17,
+        "color": "blue",
+        "name": "Alexis Maxwell",
+        "phone": "+1 505-619-2823",
+        "email": "alexmax5000@outlook.com",
+        "groups": [
+            "work"
+        ]
+    },
+    {
+        "id": 18,
+        "color": "black",
+        "name": "Richard Safi",
+        "phone": "+1 505-296-5122",
+        "email": "richard999@outlook.com",
+        "groups": [
+            "friends"
+        ]
+    },
+    {
+        "id": 19,
+        "color": "skyblue",
+        "name": "Félix Miramontes",
+        "phone": "+52 315 397 4197",
+        "email": "felixmiramontes@outlook.com",
+        "groups": [
+            "college"
+        ]
+    },
+    {
+        "id": 20,
+        "color": "brown",
+        "name": "Veronica Khan",
+        "phone": "+44 7826 731184",
+        "email": "verokhan59@outlook.com",
+        "groups": [
+            "work"
+        ]
+    }
+]
