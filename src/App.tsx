@@ -1,5 +1,7 @@
-import './actui/index.css';
 
-const App = () => <p>Hello</p>
+import './actui/index.css';
+import './index.css';
+
+const App = () => undefined;
 
 export default App;
