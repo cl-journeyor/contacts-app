@@ -1,0 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/figtree');
+
+* {
+    font-family: 'Figtree';
+}
+
+.header {
+    align-items: center;
+    background: green;
+    color: white;
+    height: 5vh;
+    justify-content: center;
+    overflow: auto;
+}

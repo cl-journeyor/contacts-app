@@ -1,29 +1,37 @@
-type Contact = {
-  id: number,
-  color: 'red' |
-    'orange' |
-    'yellow' |
-    'green' |
-    'skyblue' |
-    'blue' |
-    'violet' |
-    'brown' |
-    'white' |
-    'gray' |
-    'black',
-  name: string,
-  phone: string,
-  email: string,
-  groups: string[]
-};
+import { z } from 'zod';
 
-const DEFAULT_CONTACT: Contact = {
-  id: 0,
-  color: 'white',
-  name: '',
-  phone: '',
-  email: '',
-  groups: []
-};
+// Schemas
 
-const newDefaultContact = (): Contact => ({ ...DEFAULT_CONTACT });
+export const contactSchema = z.object({
+  id: z.number(),
+  color: z.enum([
+    'red', 'orange', 'yellow', 'green', 'skyblue', 'blue', 'violet', 'brown',
+    'white', 'gray', 'black'
+  ]),
+  name: z.string(),
+  phone: z.string(),
+  email: z.string(),
+  groups: z.array(z.string())
+});
+
+export const contactArraySchema = z.array(contactSchema);
+
+
+// Types
+
+export type Contact = z.infer<typeof contactSchema>;
+
+export type Operation = 'none' | 'create' | 'update' | 'delete' | 'search' | 'filter' | 'sort';
+
+// use object IDs
+
+// const DEFAULT_CONTACT: Contact = {
+//   id: 0,
+//   color: 'white',
+//   name: '',
+//   phone: '',
+//   email: '',
+//   groups: []
+// };
+
+// export const newDefaultContact = (): Contact => ({ ...DEFAULT_CONTACT });
