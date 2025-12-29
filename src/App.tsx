@@ -2,11 +2,14 @@ import type { Contact, Operation, WrappedContacts } from './types';
 import { useState } from 'react';
 import VStack from './actui/VStack';
 import { ContactContext } from './contexts';
+import Content from './app/Content';
 import Footer from './app/Footer';
 import Header from './app/Header';
 import './actui/index.css';
 
 const App = () => {
+  console.log('Mounting App...');
+
   const operationTuple = useState<Operation>('none');
   const selectedContactTuple = useState<Contact | undefined>(undefined);
   const wrappedContactsTuple = useState<WrappedContacts>({
@@ -20,6 +23,7 @@ const App = () => {
       <ContactContext.Provider
         value={ { operationTuple, selectedContactTuple, wrappedContactsTuple } }
       >
+        <Content/>
         <Footer/>
       </ContactContext.Provider>
     </VStack>

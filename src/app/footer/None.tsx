@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import Button from '../../actui/Button';
 import HFraction from '../../actui/HFraction';
 import { ContactContext } from '../../contexts';
-import { loadContacts } from '../../domain';
+import { readContacts } from '../../domain';
 
 const None = () => {
   const contactContextValueMaybe = useContext(ContactContext);
@@ -11,7 +11,7 @@ const None = () => {
   const setWrappedContacts = contactContextValueMaybe!.wrappedContactsTuple[1];
 
   const textHandlerPairs = {
-    'Reset': () => loadContacts(),
+    'Reset': async () => setWrappedContacts(await readContacts()),
     'Create': () => setOperation('create'),
     'Update': () => setOperation('update'),
     'Delete': () => setOperation('delete'),

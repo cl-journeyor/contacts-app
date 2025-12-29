@@ -1,55 +1,36 @@
-import { useContext } from 'react';
-import { ContactContext } from './contexts';
 import { contactArraySchema } from './types';
 import { parsedJsonMaybe } from './utils';
 
-const loadContacts = () => {
-  const contactContextValueMaybe = useContext(ContactContext);
-
-  if (contactContextValueMaybe === undefined) {
-    throw new Error('Cannot invoke `loadContacts` in the current scope');
-  }
-
-  const { wrappedContactsTuple: [ , setWrappedContacts ] } = contactContextValueMaybe;
-  const FAILED_WRAPPED_CONTACTS = {
-    success: false,
-    contacts: []
-  };
-
-  const contactString = localStorage.getItem('contacts') ?? '[]';
+const readContacts = async () => {
+  const contactString = localStorage.getItem('contacts') ?? '';
   const anyContacts = parsedJsonMaybe(contactString);
   const contactArrayValidation = contactArraySchema.safeParse(anyContacts);
 
   if (contactArrayValidation.success) {
-    setWrappedContacts({
-      success: true,
-      contacts: contactArrayValidation.data
-    });
-
-    return;
+    return { success: true, contacts: contactArrayValidation.data };
   }
 
-  fetch('/data/contacts.json')
-  .then(raw => raw.json())
-  .then(obj => {
-    const contactArrayValidation = contactArraySchema.safeParse(obj);
+  try {
+    const contactArray = await fetch('/data/contacts.json')
+      .then(raw => raw.json());
+
+    const contactArrayValidation = contactArraySchema.safeParse(contactArray);
 
     if (contactArrayValidation.success) {
       const serializedContacts = JSON.stringify(contactArrayValidation.data);
 
       localStorage.setItem('contacts', serializedContacts);
-      setWrappedContacts({
-        success: true,
-        contacts: contactArrayValidation.data
-      });
+
+      return { success: true, contacts: contactArrayValidation.data };
     }
-    else {
-      setWrappedContacts(FAILED_WRAPPED_CONTACTS);
-    }
-  })
-  .catch(() => setWrappedContacts(FAILED_WRAPPED_CONTACTS));
+
+    throw new Error('Object of type any didn\'t match the desired schema');
+  }
+  catch (e) {
+    return { success: false, contacts: [] };
+  }
 };
 
 export {
-  loadContacts
+  readContacts
 };
