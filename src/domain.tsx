@@ -1,12 +1,21 @@
-import { type Contact, contactArraySchema } from './types';
-import React from 'react';
+import { useContext } from 'react';
+import { ContactContext } from './contexts';
+import { contactArraySchema } from './types';
 import { parsedJsonMaybe } from './utils';
 
-const loadContacts = (setWrappedContacts: React.Dispatch<React.SetStateAction<{ success?: boolean, contacts: Contact[] }>>) => {
+const loadContacts = () => {
+  const contactContextValueMaybe = useContext(ContactContext);
+
+  if (contactContextValueMaybe === undefined) {
+    throw new Error('Cannot invoke `loadContacts` in the current scope');
+  }
+
+  const { wrappedContactsTuple: [ , setWrappedContacts ] } = contactContextValueMaybe;
   const FAILED_WRAPPED_CONTACTS = {
     success: false,
     contacts: []
   };
+
   const contactString = localStorage.getItem('contacts') ?? '[]';
   const anyContacts = parsedJsonMaybe(contactString);
   const contactArrayValidation = contactArraySchema.safeParse(anyContacts);

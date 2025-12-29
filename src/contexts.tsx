@@ -1,14 +1,18 @@
 import React, { createContext } from 'react';
-import type { Contact } from './types';
+import type { Contact, Operation, WrappedContacts } from './types';
 
 const ContactContext = createContext<{
+  operationTuple: [
+    Operation,
+    React.Dispatch<React.SetStateAction<Operation>>
+  ],
   selectedContactTuple: [
     Contact | undefined,
     React.Dispatch<React.SetStateAction<Contact | undefined>>
   ],
   wrappedContactsTuple: [
-    { success?: boolean, contacts: Contact[] },
-    React.Dispatch<React.SetStateAction<{ success?: boolean, contacts: Contact[] }>>
+    WrappedContacts,
+    React.Dispatch<React.SetStateAction<WrappedContacts>>
   ]
 } | undefined>(undefined);
 

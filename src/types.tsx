@@ -21,7 +21,9 @@ export const contactArraySchema = z.array(contactSchema);
 
 export type Contact = z.infer<typeof contactSchema>;
 
-export type Operation = 'none' | 'create' | 'update' | 'delete' | 'search' | 'filter' | 'sort';
+export type Operation = 'none' | 'create' | 'update' | 'delete' | 'search' | 'filter';
+
+export type WrappedContacts = { success?: boolean, contacts: Contact[] };
 
 // use object IDs
 
