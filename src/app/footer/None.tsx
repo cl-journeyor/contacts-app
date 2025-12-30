@@ -4,11 +4,13 @@ import Button from '../../actui/Button';
 import HFraction from '../../actui/HFraction';
 import { ContactContext } from '../../contexts';
 import { readContacts } from '../../domain';
+import { nonNull } from '../../utils';
 
 const None = () => {
-  const contactContextValueMaybe = useContext(ContactContext);
-  const setOperation = contactContextValueMaybe!.operationTuple[1];
-  const setWrappedContacts = contactContextValueMaybe!.wrappedContactsTuple[1];
+  const {
+    operationTuple: [ , setOperation ],
+    wrappedContactsTuple: [ , setWrappedContacts ]
+  } = nonNull(useContext(ContactContext));
 
   const textHandlerPairs = {
     'Reset': async () => setWrappedContacts(await readContacts()),
