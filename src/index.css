@@ -1,7 +1,16 @@
 @import url('https://fonts.cdnfonts.com/css/figtree');
 
+:root {
+    --cell-border: black 1px solid;
+}
+
 * {
     font-family: 'Figtree';
+}
+
+.contacts {
+    background: #222;
+    color: white;
 }
 
 .header {
@@ -11,4 +20,17 @@
     height: 5vh;
     justify-content: center;
     overflow: auto;
+}
+
+.tableCells {
+    border-bottom: var(--cell-border);
+    border-top: var(--cell-border);
+    padding: 3px;
+}
+
+.tableLabels {
+    border-bottom: var(--cell-border);
+    border-top: var(--cell-border);
+    padding: 3px;
+    text-align: left;
 }

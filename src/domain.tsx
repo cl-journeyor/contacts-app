@@ -23,7 +23,7 @@ const readContacts = async () => {
       return { success: true, contacts: contactArrayValidation.data };
     }
 
-    throw new Error('Object of type any didn\'t match the desired schema');
+    throw new Error('Fetched data didn\'t match the desired schema');
   }
   catch (e) {
     return { success: false, contacts: [] };
