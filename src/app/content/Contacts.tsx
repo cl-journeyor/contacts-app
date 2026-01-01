@@ -29,7 +29,8 @@ const Contacts = () => {
     name: contact.name,
     phone: contact.phone,
     email: contact.email,
-    groups: contact.groups.join(', ')
+    groups: contact.groups.join(', '),
+    id: contact.id
   });
 
   const successComponentSwitch = (success: boolean | undefined) => {
@@ -38,6 +39,7 @@ const Contacts = () => {
         return (
           <Table
             rows={ wrappedContacts.contacts.map(contactToRow) }
+            keySelector={ c => c.id }
             classes={ {
               cells: 'tableCells',
               labels: 'tableLabels'

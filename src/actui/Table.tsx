@@ -38,9 +38,10 @@ const readableIdentifier = (name: string): string => {
   return accumulatedChars.trimStart();
 };
 
-const Table = (
-  { rows, classes }: {
-    rows: object[],
+const Table = <T extends object>(
+  { rows, keySelector, classes }: {
+    rows: T[],
+    keySelector: (row: T) => any,
     classes?: {
       self?: string,
       labels?: string,
@@ -71,8 +72,8 @@ const Table = (
       </thead>
       <tbody>
         {
-          rows.map((r, i) => (
-            <tr key={ i }>
+          rows.map(r => (
+            <tr key={ keySelector(r) }>
               {
                 Object.entries(r).map(([ k, v ]) => (
                   <td key={ k } className={ classes?.cells }>
