@@ -1,17 +1,21 @@
 import React, { useRef } from 'react';
 
 const ColorPicker = ({
-  colors, caretColor, className, name = '', onChange = _ => {}, value
+  colors, classes, name = '', onChange = _ => {}, value
 }: {
   colors: string[],
-  caretColor?: string,
-  className?: string,
+  classes?: {
+    self?: string,
+    buttons?: string
+  },
   name?: string,
   onChange?: (target: { name: string, value: string }) => void,
   value?: string
 }) => {
   const selectionRef = useRef(document.createElement('button'));
   const uniqueColors = [ ...new Set(colors) ];
+  const selectedClass = `color-picker-selected ${ classes?.buttons }`;
+  const deselectedClass = `color-picker-deselected ${ classes?.buttons }`;
 
   const handler = ({ target }: React.MouseEvent<HTMLButtonElement>) => {
     if (!(target instanceof HTMLButtonElement)) {
@@ -19,10 +23,10 @@ const ColorPicker = ({
     }
 
     if (selectionRef.current !== target) {
-      selectionRef.current.className = 'color-picker-deselected';
+      selectionRef.current.className = deselectedClass;
     }
-    if (target.className === 'color-picker-deselected') {
-      target.className = 'color-picker-selected';
+    if (target.className.startsWith('color-picker-deselected')) {
+      target.className = selectedClass;
 
       onChange({ name: name, value: target.value });
       selectionRef.current = target;
@@ -31,7 +35,7 @@ const ColorPicker = ({
 
   const colorToButton = (color: string) => {
     const commonProps = {
-      style: { background: color, borderColor: caretColor },
+      style: { background: color },
       value: color,
       onClick: handler
     };
@@ -41,7 +45,7 @@ const ColorPicker = ({
       <button
         ref={ selectionRef }
         key={ color }
-        className='color-picker-selected'
+        className={ selectedClass }
         type='button'
         { ...commonProps }
       />
@@ -49,7 +53,7 @@ const ColorPicker = ({
     : (
       <button
         key={ color }
-        className='color-picker-deselected'
+        className={ deselectedClass }
         type='button'
         { ...commonProps }
       />
@@ -57,7 +61,7 @@ const ColorPicker = ({
   };
 
   return (
-    <div className={ `color-picker ${ className }` }>
+    <div className={ `color-picker ${ classes?.self }` }>
       { uniqueColors.map(colorToButton) }
     </div>
   );

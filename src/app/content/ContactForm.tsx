@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import ColorPicker from '../../actui/ColorPicker';
+import VStack from '../../actui/VStack';
 import { ContactContext } from '../../contexts';
 import { nonNull } from '../../utils';
 
@@ -21,58 +22,66 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
   };
 
   return (
-    <form onSubmit={ submit }>
-      <span>Choose color:</span>
-      <ColorPicker
-        name='color'
-        colors={ [
-          'red', 'orange', 'yellow', 'green', 'skyblue', 'blue', 'violet',
-          'brown', 'white', 'gray', 'black'
-        ] }
-        onChange={ onChangeHandler }
-        value={ form.color }
-      />
-      <label>
-        Enter name:&nbsp;
+    <form className='contact-form' onSubmit={ submit }>
+      <VStack className='field-group'>
+        <label>Color</label>
+        <ColorPicker
+          name='color'
+          colors={ [
+            'red', 'orange', 'yellow', 'green', 'skyblue', 'blue', 'violet',
+            'brown', 'white', 'gray', 'black'
+          ] }
+          classes={ { self: 'color-picker', buttons: 'color-picker-button' } }
+          onChange={ onChangeHandler }
+          value={ form.color }
+        />
+      </VStack>
+      <VStack className='field-group'>
+        <label htmlFor='nameField'>Name</label>
         <input
+          id='nameField'
           name='name'
+          className='text-field'
           type='text'
           required={ true }
           onChange={ e => onChangeHandler(e.target) }
         />
-      </label>
-      <br/>
-      <label>
-        Enter phone number:&nbsp;
+      </VStack>
+      <VStack className='field-group'>
+        <label htmlFor='phoneField'>Phone number</label>
         <input
+          id='phoneField'
           name='phone'
+          className='text-field'
           type='tel'
           required={ true }
           onChange={ e => onChangeHandler(e.target) }
         />
-      </label>
-      <br/>
-      <label>
-        Enter email address (optional):&nbsp;
+      </VStack>
+      <VStack className='field-group'>
+        <label htmlFor='emailField'>Email address (optional)</label>
         <input
+          id='emailField'
           name='email'
+          className='text-field'
           type='email'
           onChange={ e => onChangeHandler(e.target) }
         />
-      </label>
-      <br/>
-      <label htmlFor='groupsField'>
-        Enter groups, separated by a line break (optional):&nbsp;
-      </label>
-      <br/>
-      <textarea
-        id='groupsField'
-        name='groups'
-        onChange={ e => onChangeHandler(e.target) }
-        placeholder='For ex.: family'
-      />
-      <br/>
-      <button>Create</button>
+      </VStack>
+      <VStack className='field-group'>
+        <label htmlFor='groupsField'>Groups, separated by a line break (optional)</label>
+        <textarea
+          id='groupsField'
+          name='groups'
+          className='text-field'
+          rows={ 3 }
+          onChange={ e => onChangeHandler(e.target) }
+          placeholder='For ex.: family'
+        />
+      </VStack>
+      <VStack>
+        <button className='submit-button'>Create</button>
+      </VStack>
     </form>
   );
 };

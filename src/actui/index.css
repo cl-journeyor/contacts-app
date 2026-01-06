@@ -15,22 +15,27 @@
 
 .color-picker-deselected {
     border-style: none;
-    height: calc(1.5em - 4px);
-    margin: 2px;
+    height: calc(2em - 6px);
+    margin: 3px;
     padding: 0;
-    width: calc(1.5em - 4px);
+    width: calc(2em - 6px);
 }
 
 .color-picker-selected {
     border-style: solid;
-    border-width: 2px;
-    height: 1.5em;
+    border-width: 3px;
+    height: 2em;
     padding: 0;
-    width: 1.5em;
+    width: 2em;
 }
 
 .h-fraction {
     display: grid;
+}
+
+.h-stack {
+    display: flex;
+    flex-direction: row;
 }
 
 .table {

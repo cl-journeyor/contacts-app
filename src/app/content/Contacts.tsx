@@ -41,8 +41,8 @@ const Contacts = () => {
             rows={ wrappedContacts.contacts.map(contactToRow) }
             keySelector={ c => c.id }
             classes={ {
-              cells: 'tableCells',
-              labels: 'tableLabels'
+              cells: 'table-cells',
+              labels: 'table-labels'
             } }
           />
         );

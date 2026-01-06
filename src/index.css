@@ -8,9 +8,27 @@
     font-family: 'Figtree';
 }
 
+.color-picker {
+    margin-top: 4px;
+}
+
+.color-picker-button {
+    border-color: white;
+    border-radius: 6px;
+}
+
+.contact-form {
+    background: #222;
+    color: white;
+}
+
 .contacts {
     background: #222;
     color: white;
+}
+
+.field-group {
+    padding: 5px;
 }
 
 .header {
@@ -22,15 +40,33 @@
     overflow: auto;
 }
 
-.tableCells {
+.submit-button {
+    display: flex;
+}
+
+.table-cells {
     border-bottom: var(--cell-border);
     border-top: var(--cell-border);
     padding: 3px;
 }
 
-.tableLabels {
+.table-labels {
     border-bottom: var(--cell-border);
     border-top: var(--cell-border);
     padding: 3px;
     text-align: left;
+}
+
+.text-field {
+    background: #252525;
+    border-bottom: white 1px solid;
+    border-left: none;
+    border-radius: 6px;
+    border-right: none;
+    border-top: none;
+    color: white;
+    font-size: 1em;
+    margin-top: 4px;
+    padding: 4px;
+    resize: none;
 }
