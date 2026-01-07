@@ -6,10 +6,14 @@ import { nonNull } from '../../utils';
 
 const CreateOrUpdate = () => {
   const {
-    operationTuple: [ , setOperation ]
+    operationTuple: [ , setOperation ],
+    selectedContactTuple: [ , setSelectedContact ]
   } = nonNull(useContext(ContactContext));
 
-  const cancel = () => setOperation('none');
+  const cancel = () => {
+    setSelectedContact(undefined);
+    setOperation('none');
+  };
 
   return (
     <HFraction>

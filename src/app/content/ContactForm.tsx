@@ -38,6 +38,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
 
     const {
       operationTuple: [ , setOperation ],
+      selectedContactTuple: [ , setSelectedContact ],
       wrappedContactsTuple: [ wrappedContacts ]
     } = contactContext;
     const unsafeContact = {
@@ -54,6 +55,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
       writeContacts([ ...wrappedContacts.contacts, contactValidation.data ]);
     }
 
+    setSelectedContact(undefined);
     setOperation('none');
   };
 
@@ -62,7 +64,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
 
     const {
       operationTuple: [ , setOperation ],
-      selectedContactTuple: [ selectedContact ],
+      selectedContactTuple: [ selectedContact, setSelectedContact ],
       wrappedContactsTuple: [ wrappedContacts ]
     } = contactContext;
     const unsafeContact = {
@@ -84,6 +86,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
       );
     }
 
+    setSelectedContact(undefined);
     setOperation('none');
   };
 

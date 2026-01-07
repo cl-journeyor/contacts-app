@@ -29,7 +29,7 @@ const None = () => {
     setWrappedContacts(prev => ({
       success: prev.success,
       contacts: _.orderBy(prev.contacts, c => c.name)
-    }));    
+    }));
 
   return (
     <HFraction>
