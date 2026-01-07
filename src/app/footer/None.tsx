@@ -28,7 +28,7 @@ const None = () => {
   const sort = () =>
     setWrappedContacts(prev => ({
       success: prev.success,
-      contacts: _.orderBy(prev.contacts, c => c.name)
+      contacts: _.orderBy(prev.contacts, c => c.name.toLowerCase())
     }));
 
   return (
