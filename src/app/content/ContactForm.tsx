@@ -2,27 +2,93 @@ import React, { useContext, useState } from 'react';
 import ColorPicker from '../../actui/ColorPicker';
 import VStack from '../../actui/VStack';
 import { ContactContext } from '../../contexts';
+import { contactSchema } from '../../types';
+import { writeContacts } from '../../domain';
 import { nonNull } from '../../utils';
 
 const ContactForm = ({ updates }: { updates?: boolean }) => {
-  const [ form, setForm ] = useState({
-    color: 'red',
-    name: '',
-    phone: '',
-    email: '', // Optional
-    groups: '' // Optional
-  });
+  const contactContext = nonNull(useContext(ContactContext));
+
+  const determineInitialFormValues = () => {
+    if (updates) {
+      const {
+        color, name, phone, email, groups
+      } = nonNull(contactContext.selectedContactTuple[0]);
+
+      return { color, name, phone, email, groups: groups.join('\n') };
+    }
+    else {
+      return {
+        color: 'red',
+        name: '',
+        phone: '',
+        email: '', // Optional
+        groups: '' // Optional
+      };
+    }
+  };
+
+  const [ form, setForm ] = useState(determineInitialFormValues());
 
   const onChangeHandler = (target: { name: string, value: string }) =>
     setForm(prev => ({ ...prev, [target.name]: target.value }));
 
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const create = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(JSON.stringify(form));
+
+    const {
+      operationTuple: [ , setOperation ],
+      wrappedContactsTuple: [ wrappedContacts ]
+    } = contactContext;
+    const unsafeContact = {
+      id: Math.max(...wrappedContacts.contacts.map(c => c.id)) + 1,
+      color: form.color,
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      groups: form.groups.split('\n')
+    };
+    const contactValidation = contactSchema.safeParse(unsafeContact);
+
+    if (contactValidation.success) {
+      writeContacts([ ...wrappedContacts.contacts, contactValidation.data ]);
+    }
+
+    setOperation('none');
+  };
+
+  const update = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const {
+      operationTuple: [ , setOperation ],
+      selectedContactTuple: [ selectedContact ],
+      wrappedContactsTuple: [ wrappedContacts ]
+    } = contactContext;
+    const unsafeContact = {
+      id: nonNull(selectedContact).id,
+      color: form.color,
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      groups: form.groups.split('\n')
+    };
+    const contactValidation = contactSchema.safeParse(unsafeContact);
+
+    if (contactValidation.success) {
+      const updatedContact = contactValidation.data;
+
+      writeContacts(
+        wrappedContacts.contacts
+          .map(c => c.id === updatedContact.id ? updatedContact : c)
+      );
+    }
+
+    setOperation('none');
   };
 
   return (
-    <form className='contact-form' onSubmit={ submit }>
+    <form className='contact-form' onSubmit={ updates ? update : create }>
       <VStack className='field-group'>
         <label>Color</label>
         <ColorPicker
@@ -45,6 +111,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
           type='text'
           required={ true }
           onChange={ e => onChangeHandler(e.target) }
+          value={ form.name }
         />
       </VStack>
       <VStack className='field-group'>
@@ -56,6 +123,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
           type='tel'
           required={ true }
           onChange={ e => onChangeHandler(e.target) }
+          value={ form.phone }
         />
       </VStack>
       <VStack className='field-group'>
@@ -66,6 +134,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
           className='text-field'
           type='email'
           onChange={ e => onChangeHandler(e.target) }
+          value={ form.email }
         />
       </VStack>
       <VStack className='field-group'>
@@ -77,10 +146,11 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
           rows={ 3 }
           onChange={ e => onChangeHandler(e.target) }
           placeholder='For ex.: family'
+          value={ form.groups }
         />
       </VStack>
       <VStack>
-        <button className='submit-button'>Create</button>
+        <button className='submit-button'>{ updates ? 'Update' : 'Create' }</button>
       </VStack>
     </form>
   );

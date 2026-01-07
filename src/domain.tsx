@@ -1,4 +1,4 @@
-import { contactArraySchema } from './types';
+import { type Contact, contactArraySchema } from './types';
 import { parsedJsonMaybe } from './utils';
 
 const readContacts = async () => {
@@ -30,6 +30,11 @@ const readContacts = async () => {
   }
 };
 
+const writeContacts = (contacts: Contact[]) => {
+  localStorage.setItem('contacts', JSON.stringify(contacts));
+};
+
 export {
-  readContacts
+  readContacts,
+  writeContacts
 };

@@ -24,16 +24,3 @@ export type Contact = z.infer<typeof contactSchema>;
 export type Operation = 'none' | 'create' | 'update' | 'delete' | 'search' | 'filter';
 
 export type WrappedContacts = { success?: boolean, contacts: Contact[] };
-
-// use object IDs
-
-// const DEFAULT_CONTACT: Contact = {
-//   id: 0,
-//   color: 'white',
-//   name: '',
-//   phone: '',
-//   email: '',
-//   groups: []
-// };
-
-// export const newDefaultContact = (): Contact => ({ ...DEFAULT_CONTACT });
