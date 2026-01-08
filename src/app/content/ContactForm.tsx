@@ -17,15 +17,14 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
 
       return { color, name, phone, email, groups: groups.join('\n') };
     }
-    else {
-      return {
-        color: 'red',
-        name: '',
-        phone: '',
-        email: '', // Optional
-        groups: '' // Optional
-      };
-    }
+
+    return {
+      color: 'red',
+      name: '',
+      phone: '',
+      email: '', // Optional
+      groups: '' // Optional
+    };
   };
 
   const [ form, setForm ] = useState(determineInitialFormValues());

@@ -33,19 +33,22 @@ const Contacts = () => {
     id: contact.id
   });
 
-  const successComponentSwitch = (success: boolean | undefined) => {
-    switch (success) {
+  const wrappedComponentCond = () => {
+    if (wrappedContacts.success && wrappedContacts.contacts.length > 0) {
+      return (
+        <Table
+          rows={ wrappedContacts.contacts.map(contactToRow) }
+          keySelector={ c => c.id }
+          classes={ {
+            cells: 'table-cells',
+            labels: 'table-labels'
+          } }
+        />
+      );
+    }
+    switch (wrappedContacts.success) {
       case true:
-        return (
-          <Table
-            rows={ wrappedContacts.contacts.map(contactToRow) }
-            keySelector={ c => c.id }
-            classes={ {
-              cells: 'table-cells',
-              labels: 'table-labels'
-            } }
-          />
-        );
+        return <h1>No contacts found</h1>
       case false:
         return <h1>Error while fetching the contacts</h1>
       default:
@@ -61,7 +64,7 @@ const Contacts = () => {
 
   return (
     <VStack className='contacts'>
-      { successComponentSwitch(wrappedContacts.success) }
+      { wrappedComponentCond() }
     </VStack>
   );
 };
