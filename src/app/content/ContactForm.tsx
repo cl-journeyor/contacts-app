@@ -39,10 +39,11 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
     const {
       operationTuple: [ , setOperation ],
       selectedContactTuple: [ , setSelectedContact ],
-      wrappedContactsTuple: [ wrappedContacts ]
+      wrappedContactsTuple: [ { contacts } ]
     } = contactContext;
+    const nextId = (contacts.length && Math.max(...contacts.map(c => c.id))) + 1;
     const unsafeContact = {
-      id: Math.max(...wrappedContacts.contacts.map(c => c.id)) + 1,
+      id: nextId,
       color: form.color,
       name: form.name,
       phone: form.phone,
@@ -52,7 +53,7 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
     const contactValidation = contactSchema.safeParse(unsafeContact);
 
     if (contactValidation.success) {
-      writeContacts([ ...wrappedContacts.contacts, contactValidation.data ]);
+      writeContacts([ ...contacts, contactValidation.data ]);
     }
 
     setSelectedContact(undefined);

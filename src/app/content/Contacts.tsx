@@ -58,7 +58,7 @@ const Contacts = () => {
       case false:
         return (
           <HStack className='contacts-message-container'>
-            Error while fetching the contacts
+            Try creating your contacts!
           </HStack>
         );
       default:
