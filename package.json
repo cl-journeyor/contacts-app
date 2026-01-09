@@ -1,9 +1,11 @@
 {
+  "homepage": "https://cl-journeyor.github.io/contacts-app",
   "name": "contacts-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -11,6 +13,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.17.21",
+    "gh-pages": "^6.3.0",
     "lodash": "^4.17.21",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
