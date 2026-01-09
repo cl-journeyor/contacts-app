@@ -1,6 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import Button from '../../actui/Button';
 import HFraction from '../../actui/HFraction';
+import HStack from '../../actui/HStack';
+import VStack from '../../actui/VStack';
 import { ContactContext } from '../../contexts';
 import { nonNull } from '../../utils';
 
@@ -14,7 +16,7 @@ const Search = () => {
   const originalContactsRef = useRef([ ...wrappedContacts.contacts ]);
 
   const search = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchInput = e.target.value.toLowerCase();
+    const searchInput = e.target.value.toLocaleLowerCase();
 
     if (searchInput === '') {
       setWrappedContacts(prev => ({
@@ -26,7 +28,7 @@ const Search = () => {
     }
 
     const searchResults = originalContactsRef.current
-      .filter(c => c.name.toLowerCase().includes(searchInput));
+      .filter(c => c.name.toLocaleLowerCase().includes(searchInput));
 
     setWrappedContacts(prev => ({
       success: prev.success,
@@ -47,13 +49,20 @@ const Search = () => {
   };
 
   return (
-    <HFraction>
-      <Button onClick={ cancel }>Cancel</Button>
-      Search
-      <input
-        type='text'
-        onChange={ search }
-      />
+    <HFraction className='footer'>
+      <Button className='secondary-button' onClick={ cancel }>Cancel</Button>
+      <HStack className='footer-label-container'>
+        <label htmlFor='searchField'>Search</label>
+      </HStack>
+      <VStack className='search-field-container'>
+        <input
+          id='searchField'
+          className='text-field'
+          type='text'
+          onChange={ search }
+          autoFocus={ true }
+        />
+      </VStack>
     </HFraction>
   );
 };

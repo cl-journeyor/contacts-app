@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import ColorPicker from '../../actui/ColorPicker';
+import HStack from '../../actui/HStack';
 import VStack from '../../actui/VStack';
 import { ContactContext } from '../../contexts';
 import { contactSchema } from '../../types';
@@ -90,22 +91,27 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
   };
 
   return (
-    <form className='contact-form' onSubmit={ updates ? update : create }>
+    <form className='content' onSubmit={ updates ? update : create }>
       <VStack className='field-group'>
-        <label>Color</label>
+        <label className='form-label'>Color</label>
         <ColorPicker
           name='color'
           colors={ [
             'red', 'orange', 'yellow', 'green', 'skyblue', 'blue', 'violet',
             'brown', 'white', 'gray', 'black'
           ] }
-          classes={ { self: 'color-picker', buttons: 'color-picker-button' } }
+          classes={ { buttons: 'color-picker-button' } }
           onChange={ onChangeHandler }
           value={ form.color }
         />
       </VStack>
       <VStack className='field-group'>
-        <label htmlFor='nameField'>Name</label>
+        <label
+          htmlFor='nameField'
+          className='form-label'
+        >
+          Name
+        </label>
         <input
           id='nameField'
           name='name'
@@ -117,7 +123,12 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
         />
       </VStack>
       <VStack className='field-group'>
-        <label htmlFor='phoneField'>Phone number</label>
+        <label
+          htmlFor='phoneField'
+          className='form-label'
+        >
+          Phone number
+        </label>
         <input
           id='phoneField'
           name='phone'
@@ -129,7 +140,12 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
         />
       </VStack>
       <VStack className='field-group'>
-        <label htmlFor='emailField'>Email address (optional)</label>
+        <label
+          htmlFor='emailField'
+          className='form-label'
+        >
+          Email address (optional)
+        </label>
         <input
           id='emailField'
           name='email'
@@ -140,7 +156,12 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
         />
       </VStack>
       <VStack className='field-group'>
-        <label htmlFor='groupsField'>Groups, separated by a line break (optional)</label>
+        <label
+          htmlFor='groupsField'
+          className='form-label'
+        >
+          Groups, separated by a line break (optional)
+        </label>
         <textarea
           id='groupsField'
           name='groups'
@@ -151,9 +172,9 @@ const ContactForm = ({ updates }: { updates?: boolean }) => {
           value={ form.groups }
         />
       </VStack>
-      <VStack>
+      <HStack className='submit-button-container'>
         <button className='submit-button'>{ updates ? 'Update' : 'Create' }</button>
-      </VStack>
+      </HStack>
     </form>
   );
 };

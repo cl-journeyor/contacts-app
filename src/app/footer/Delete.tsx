@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Button from '../../actui/Button';
 import HFraction from '../../actui/HFraction';
+import HStack from '../../actui/HStack';
 import { ContactContext } from '../../contexts';
 import { writeContacts } from '../../domain';
 import { nonNull } from '../../utils';
@@ -30,10 +31,12 @@ const Delete = () => {
   const cancel = () => setOperation('none');
 
   return (
-    <HFraction>
-      Delete selected contact?
-      <Button onClick={ cancel }>No</Button>
-      <Button onClick={ doDelete }>Yes</Button>
+    <HFraction className='footer'>
+      <HStack className='footer-label-container'>
+        <label>Delete selected contact?</label>
+      </HStack>
+      <Button className='secondary-button' onClick={ cancel }>No</Button>
+      <Button className='primary-button' onClick={ doDelete }>Yes</Button>
     </HFraction>
   );
 };

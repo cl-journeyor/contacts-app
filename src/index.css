@@ -9,44 +9,119 @@
 }
 
 .color-picker {
-    margin-top: 4px;
+    align-items: center;
+    overflow: auto;
 }
 
 .color-picker-button {
     border-color: white;
     border-radius: 6px;
+    cursor: pointer;
 }
 
-.contact-form {
-    background: #222;
-    color: white;
+.contacts-message-container {
+    padding: 3px;
 }
 
-.contacts {
+.content {
     background: #222;
     color: white;
+    height: 90vh;
+    overflow: auto;
+}
+
+.disabled {
+    opacity: 0.25;
 }
 
 .field-group {
     padding: 5px;
 }
 
+.footer {
+    background: #8400ff;
+    color: white;
+    height: 5vh;
+}
+
+.footer-label-container {
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+}
+
+.form-label {
+    margin-bottom: 4px;
+}
+
 .header {
     align-items: center;
-    background: green;
+    background: #8400ff;
     color: white;
     height: 5vh;
     justify-content: center;
     overflow: auto;
 }
 
+.primary-button {
+    align-items: center;
+    background: white;
+    border-radius: 6px;
+    border-width: 0px;
+    color: #8400ff;
+    cursor: pointer;
+    font-size: 1em;
+    justify-content: center;
+}
+
+.radio {
+    accent-color: #8400ff;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.search-field-container {
+    justify-content: center;
+}
+
+.secondary-button {
+    align-items: center;
+    background: none;
+    border: white 1px solid;
+    border-radius: 6px;
+    color: white;
+    font-size: 1em;
+    justify-content: center;
+}
+
+.secondary-button:disabled {
+    cursor: not-allowed;
+}
+
+.secondary-button:enabled {
+    cursor: pointer;
+}
+
+.submit-button-container {
+    justify-content: center;
+    padding: 5px;
+}
+
 .submit-button {
-    display: flex;
+    background: white;
+    border-radius: 6px;
+    border-width: 0px;
+    color: #8400ff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 4px;
 }
 
 .table-cells {
     border-bottom: var(--cell-border);
     border-top: var(--cell-border);
+    overflow-wrap: anywhere;
     padding: 3px;
 }
 
@@ -66,7 +141,6 @@
     border-top: none;
     color: white;
     font-size: 1em;
-    margin-top: 4px;
     padding: 4px;
     resize: none;
 }

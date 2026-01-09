@@ -1,4 +1,4 @@
-const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const capitalize = (s: string) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
 
 const nonNull = <T,>(value: T | null | undefined): T => {
   const throwError = (): T => {

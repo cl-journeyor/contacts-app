@@ -1,5 +1,6 @@
 import type { Contact } from '../../types';
 import { useContext, useEffect } from 'react';
+import HStack from '../../actui/HStack';
 import Table from '../../actui/Table';
 import VStack from '../../actui/VStack';
 import { ContactContext } from '../../contexts';
@@ -16,6 +17,7 @@ const Contacts = () => {
     '': (
       <input
         name='contact'
+        className='radio'
         type='radio'
         onChange={ () => setSelectedContact(contact) }
       />
@@ -48,22 +50,35 @@ const Contacts = () => {
     }
     switch (wrappedContacts.success) {
       case true:
-        return <h1>No contacts found</h1>
+        return (
+          <HStack className='contacts-message-container'>
+            No contacts found
+          </HStack>
+        );
       case false:
-        return <h1>Error while fetching the contacts</h1>
+        return (
+          <HStack className='contacts-message-container'>
+            Error while fetching the contacts
+          </HStack>
+        );
       default:
-        return <h1>Loading contacts...</h1>
+        return (
+          <HStack className='contacts-message-container'>
+            Loading contacts...
+          </HStack>
+        );
     }
   };
 
   useEffect(() => {
-    const setWrappedContactsAsync = async () => setWrappedContacts(await readContacts());
+    const setWrappedContactsAsync = async () =>
+      setWrappedContacts(await readContacts());
 
     setWrappedContactsAsync();
   }, []);
 
   return (
-    <VStack className='contacts'>
+    <VStack className='content'>
       { wrappedComponentCond() }
     </VStack>
   );

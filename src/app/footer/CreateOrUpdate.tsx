@@ -16,8 +16,8 @@ const CreateOrUpdate = () => {
   };
 
   return (
-    <HFraction>
-      <Button onClick={ cancel }>Cancel</Button>
+    <HFraction className='footer'>
+      <Button className='secondary-button' onClick={ cancel }>Cancel</Button>
     </HFraction>
   );
 };

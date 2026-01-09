@@ -16,6 +16,7 @@ const None = () => {
 
   const createButton = (operation: Operation, disabled?: boolean) => (
     <Button
+      className={ `secondary-button ${ disabled && 'disabled' }` }
       onClick={ () => setOperation(operation) }
       disabled={ disabled }  
     >
@@ -28,18 +29,18 @@ const None = () => {
   const sort = () =>
     setWrappedContacts(prev => ({
       success: prev.success,
-      contacts: _.orderBy(prev.contacts, c => c.name.toLowerCase())
+      contacts: _.orderBy(prev.contacts, c => c.name.toLocaleLowerCase())
     }));
 
   return (
-    <HFraction>
-      <Button onClick={ reset }>Reset</Button>
+    <HFraction className='footer'>
+      <Button className='secondary-button' onClick={ reset }>Reset</Button>
       { createButton('create') }
       { createButton('update', !selectedContact) }
       { createButton('delete', !selectedContact) }
       { createButton('search') }
       { createButton('filter') }
-      <Button onClick={ sort }>Sort</Button>
+      <Button className='secondary-button' onClick={ sort }>Sort</Button>
     </HFraction>
   );
 };
