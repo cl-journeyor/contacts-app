@@ -47,6 +47,7 @@
 .footer-label-container {
     align-items: center;
     justify-content: flex-end;
+    overflow: auto;
     padding-right: 8px;
 }
 
