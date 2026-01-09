@@ -11,7 +11,7 @@ const readContacts = async () => {
   }
 
   try {
-    const response = await fetch('/data/contacts.json');
+    const response = await fetch('data/contacts.json');
     const contactArray = await response.json();
     const contactArrayValidation = contactArraySchema.safeParse(contactArray);
 

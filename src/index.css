@@ -26,7 +26,7 @@
 .content {
     background: #222;
     color: white;
-    height: 90vh;
+    height: 85vh;
     overflow: auto;
 }
 
@@ -41,7 +41,7 @@
 .footer {
     background: #8400ff;
     color: white;
-    height: 5vh;
+    height: 8vh;
 }
 
 .footer-label-container {
@@ -58,7 +58,7 @@
     align-items: center;
     background: #8400ff;
     color: white;
-    height: 5vh;
+    height: 7vh;
     justify-content: center;
     overflow: auto;
 }
@@ -83,6 +83,7 @@
 
 .search-field-container {
     justify-content: center;
+    overflow: auto;
 }
 
 .secondary-button {
