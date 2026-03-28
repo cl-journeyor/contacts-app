@@ -26,7 +26,7 @@
 .content {
     background: #222;
     color: white;
-    height: 85vh;
+    height: 85svh;
     overflow: auto;
 }
 
@@ -41,7 +41,7 @@
 .footer {
     background: #8400ff;
     color: white;
-    height: 8vh;
+    height: 8svh;
 }
 
 .footer-label-container {
@@ -59,7 +59,7 @@
     align-items: center;
     background: #8400ff;
     color: white;
-    height: 7vh;
+    height: 7svh;
     justify-content: center;
     overflow: auto;
 }
